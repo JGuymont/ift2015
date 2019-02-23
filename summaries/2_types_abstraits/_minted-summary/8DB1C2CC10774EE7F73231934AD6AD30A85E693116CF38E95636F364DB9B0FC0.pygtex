@@ -1,0 +1,48 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{from} \PYG{n+nn}{node} \PYG{k+kn}{import} \PYG{n}{Node}
+\PYG{k+kn}{from} \PYG{n+nn}{list} \PYG{k+kn}{import} \PYG{n}{List}
+
+\PYG{k}{class} \PYG{n+nc}{SinglyLinkedList}\PYG{p}{(}\PYG{n}{List}\PYG{p}{):}
+
+    \PYG{k}{def} \PYG{n+nf+fm}{\PYGZus{}\PYGZus{}init\PYGZus{}\PYGZus{}}\PYG{p}{(} \PYG{n+nb+bp}{self} \PYG{p}{):}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}head} \PYG{o}{=} \PYG{n+nb+bp}{None}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}last} \PYG{o}{=} \PYG{n+nb+bp}{None}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}size} \PYG{o}{=} \PYG{l+m+mi}{0}
+
+    \PYG{k}{def} \PYG{n+nf+fm}{\PYGZus{}\PYGZus{}len\PYGZus{}\PYGZus{}}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{):}
+        \PYG{c+c1}{\PYGZsh{} return the lenght of the list}
+        \PYG{k}{pass}
+
+    \PYG{k}{def} \PYG{n+nf+fm}{\PYGZus{}\PYGZus{}str\PYGZus{}\PYGZus{}}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{):}
+        \PYG{c+c1}{\PYGZsh{} return a string representation of the list}
+        \PYG{k}{pass} 
+
+    \PYG{k}{def} \PYG{n+nf}{is\PYGZus{}empty}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{):}
+        \PYG{c+c1}{\PYGZsh{} return True if the list is empty else False}
+        \PYG{k}{pass}
+
+    \PYG{k}{def} \PYG{n+nf}{append}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{element}\PYG{p}{):}
+        \PYG{c+c1}{\PYGZsh{} add an element at the end of the list in O(1)}
+        \PYG{k}{pass}
+
+    \PYG{k}{def} \PYG{n+nf}{insert}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{element}\PYG{p}{):}
+        \PYG{c+c1}{\PYGZsh{} add an element at the beginning of the list in O(1)}
+        \PYG{k}{pass}
+
+    \PYG{k}{def} \PYG{n+nf}{remove}\PYG{p}{(} \PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{k} \PYG{p}{):}
+        \PYG{c+c1}{\PYGZsh{} remove the element at index k in O(n)}
+        \PYG{k}{pass}
+
+    \PYG{k}{def} \PYG{n+nf}{find}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{element}\PYG{p}{):}
+        \PYG{c+c1}{\PYGZsh{} return the index where element is located}
+        \PYG{c+c1}{\PYGZsh{} or None if the element is not in the list}
+        \PYG{k}{pass}
+
+    \PYG{k}{def} \PYG{n+nf}{last}\PYG{p}{(} \PYG{n+nb+bp}{self} \PYG{p}{):}
+        \PYG{c+c1}{\PYGZsh{} return the last element if the list is not empty}
+        \PYG{k}{pass}
+
+    \PYG{k}{def} \PYG{n+nf}{first}\PYG{p}{(} \PYG{n+nb+bp}{self} \PYG{p}{):}
+        \PYG{c+c1}{\PYGZsh{} return the first element if the list is not empty}
+        \PYG{k}{pass}
+\end{Verbatim}

@@ -1,0 +1,13 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{class} \PYG{n+nc}{SinglyLinkedList}
+    \PYG{o}{...}
+    \PYG{k}{def} \PYG{n+nf}{append}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{e}\PYG{p}{):}
+        \PYG{n}{new\PYGZus{}tail} \PYG{o}{=} \PYG{n}{Node}\PYG{p}{(}\PYG{n}{e}\PYG{p}{,} \PYG{n+nb+bp}{None}\PYG{p}{)}
+        \PYG{k}{if} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{is\PYGZus{}empty}\PYG{p}{():}
+            \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}head} \PYG{o}{=} \PYG{n}{new\PYGZus{}tail}
+            \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}tail} \PYG{o}{=} \PYG{n}{new\PYGZus{}tail}
+        \PYG{k}{else}\PYG{p}{:}
+            \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}tail}\PYG{o}{.}\PYG{n}{\PYGZus{}next} \PYG{o}{=} \PYG{n}{new\PYGZus{}tail}
+            \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}tail} \PYG{o}{=} \PYG{n}{new\PYGZus{}tail}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}size} \PYG{o}{+=} \PYG{l+m+mi}{1}
+\end{Verbatim}

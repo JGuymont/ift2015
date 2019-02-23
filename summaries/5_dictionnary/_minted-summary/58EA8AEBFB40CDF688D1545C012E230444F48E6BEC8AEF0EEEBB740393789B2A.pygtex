@@ -1,0 +1,9 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def} \PYG{n+nf}{DFS\PYGZus{}complete}\PYG{p}{(}\PYG{n}{g}\PYG{p}{):}
+    \PYG{n}{forest} \PYG{o}{=} \PYG{p}{\PYGZob{}\PYGZcb{}}
+    \PYG{k}{for} \PYG{n}{u} \PYG{o+ow}{in} \PYG{n}{g}\PYG{o}{.}\PYG{n}{vertices}\PYG{p}{():}
+        \PYG{k}{if} \PYG{n}{u} \PYG{o+ow}{not} \PYG{o+ow}{in} \PYG{n}{forest}\PYG{p}{:}
+            \PYG{n}{forest}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]} \PYG{o}{=} \PYG{n+nb+bp}{None}
+            \PYG{n}{DFS}\PYG{p}{(}\PYG{n}{g}\PYG{p}{,} \PYG{n}{u}\PYG{p}{,} \PYG{n}{forest}\PYG{p}{)}
+   \PYG{k}{return} \PYG{n}{forest}
+\end{Verbatim}

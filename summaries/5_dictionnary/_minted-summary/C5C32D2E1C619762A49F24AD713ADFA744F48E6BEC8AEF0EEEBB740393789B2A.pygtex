@@ -1,0 +1,15 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{class} \PYG{n+nc}{HashMap}\PYG{p}{(}\PYG{n}{Map}\PYG{p}{):}
+    \PYG{k}{def} \PYG{n+nf+fm}{\PYGZus{}\PYGZus{}init\PYGZus{}\PYGZus{}}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{cap}\PYG{o}{=}\PYG{l+m+mi}{11}\PYG{p}{,} \PYG{n}{p}\PYG{o}{=}\PYG{l+m+mi}{109345121}\PYG{p}{):}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}T} \PYG{o}{=} \PYG{n}{cap} \PYG{o}{*} \PYG{p}{[}\PYG{n+nb+bp}{None}\PYG{p}{]}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}n} \PYG{o}{=} \PYG{l+m+mi}{0}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}prime} \PYG{o}{=} \PYG{n}{p}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}scale} \PYG{o}{=} \PYG{l+m+mi}{1} \PYG{o}{+} \PYG{n}{randrange}\PYG{p}{(}\PYG{n}{p}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)}
+        \PYG{n}{found} \PYG{o}{=} \PYG{n+nb+bp}{False}
+        \PYG{k}{while} \PYG{o+ow}{not} \PYG{n}{found}\PYG{p}{:}
+            \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}scale} \PYG{o}{=} \PYG{l+m+mi}{1} \PYG{o}{+} \PYG{n}{randrange}\PYG{p}{(}\PYG{n}{p}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)}
+            \PYG{k}{if} \PYG{o+ow}{not} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}scale} \PYG{o}{\PYGZpc{}} \PYG{n}{p} \PYG{o}{==} \PYG{l+m+mi}{0}\PYG{p}{:}
+                \PYG{n}{found} \PYG{o}{=} \PYG{n+nb+bp}{True}
+       \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}shift} \PYG{o}{=} \PYG{n}{randrange}\PYG{p}{(}\PYG{n}{p}\PYG{p}{)}
+       \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}mask} \PYG{o}{=} \PYG{n}{cap}
+\end{Verbatim}

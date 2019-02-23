@@ -1,0 +1,14 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def} \PYG{n+nf}{\PYGZus{}splay}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{p}\PYG{p}{):}
+    \PYG{k}{while} \PYG{o+ow}{not} \PYG{n}{p} \PYG{o}{==} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{root}\PYG{p}{():}
+        \PYG{n}{parent} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{parent}\PYG{p}{(}\PYG{n}{p}\PYG{p}{)}
+        \PYG{n}{grand\PYGZus{}parent} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{parent}\PYG{p}{(}\PYG{n}{parent}\PYG{p}{)}
+        \PYG{k}{if} \PYG{n}{grand\PYGZus{}parent} \PYG{o+ow}{is} \PYG{n+nb+bp}{None}\PYG{p}{:}
+            \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}rotate}\PYG{p}{(}\PYG{n}{p}\PYG{p}{)}
+        \PYG{k}{elif} \PYG{p}{(}\PYG{n}{parent} \PYG{o}{==} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{left}\PYG{p}{(}\PYG{n}{grand\PYGZus{}parent}\PYG{p}{))} \PYG{o}{==} \PYG{p}{(}\PYG{n}{p} \PYG{o}{==} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{left}\PYG{p}{(}\PYG{n}{parent}\PYG{p}{)):}
+            \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}rotate}\PYG{p}{(}\PYG{n}{parent}\PYG{p}{)}
+            \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}rotate}\PYG{p}{(}\PYG{n}{p}\PYG{p}{)}
+        \PYG{k}{else}\PYG{p}{:}
+            \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}rotate}\PYG{p}{(}\PYG{n}{p}\PYG{p}{)}
+            \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}rotate}\PYG{p}{(}\PYG{n}{p}\PYG{p}{)}
+\end{Verbatim}

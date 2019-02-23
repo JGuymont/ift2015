@@ -1,0 +1,106 @@
+#!/usr/local/bin/python3
+
+# author = "Francois Major"
+# version = "1.0"
+# date = "15 février 2014"
+#
+# Programme Python pour IFT2015/Types abstraits/Pile
+#
+# Pris et modifié de Goodrich, Tamassia & Goldwasser
+#   Data Structures & Algorithms in Python (c)2013
+#
+# Ce programme prend en input une expression
+# arithmétique composée de chiffres (0 à 9) et l'évalue
+
+# utilise 2 piles différentes
+from ArrayStack import ArrayStack
+from ListStack  import ListStack
+
+# Fonction principale
+def main():
+    # Lire en input une expression
+    global trace
+    trace = input( "Voulez-vous la trace (o/n) ? " )
+    if( trace == 'o' ):
+        trace = True
+    else:
+        trace = False
+    expr = input( 'Entrez une expression: ' )
+
+    print( "L'expression ", expr, "=", evalExp( expr ) )
+
+# précédences des opérations
+def prec( op ):
+    if op in '*/':
+        return 2
+    elif op in "+-":
+        return 1
+    #this is '$'
+    return 0
+
+def evalExp( expr ):
+    # on utilise une pile pour les valeurs et une pile pour les opérations
+    valStk = ArrayStack()
+    opStk = ListStack()
+
+    # tant qu'il y a des jetons en entrée
+    for z in expr:
+        if z.isdigit(): # si chiffre, on l'empile
+            valStk.push( z )
+            if trace:
+                print( "chiffre dans la pile", valStk )
+        elif z in "+-*/": # si opération, on voit si on peut l'effectuer
+            if trace:
+                print( "opération lue : ", z )
+            repeatOps( z, valStk, opStk )
+            # on empile l'opération
+            opStk.push( z )
+            if trace:
+                print( "opération dans la pile", opStk )
+    # on exécute l'opération sur la pile, le cas échéant
+    repeatOps( '$', valStk, opStk )
+    # le resultat se trouve sur le top de la pile des valeurs
+    return valStk.top()
+
+# effectue une opération de 2 valeurs et empile le résultat
+def doOp( valStk, opStk ):
+    # on effectue l'opération sur le top de la pile des opérations
+    op = opStk.pop()
+
+    # appliquée aux 2 valeurs sur la pile des valeurs
+    x = valStk.pop()
+    y = valStk.pop()
+
+    if trace:
+        print( "doOp( ", x, " ", op, " ", y, " )" )
+    if op == '+':
+        z = int(y) + int(x)
+    elif op == '-':
+        z = int(y) - int(x)
+    elif op == '*':
+        z = int(y) * int(x)
+    elif op == "/":
+        if( int( x ) is not 0 ):
+            z = int(y) / int(x)
+        else:
+            print( "Division by 0, no result! " )
+            exit()
+
+    # on empile le résultat sur la pile des valeurs
+    valStk.push( z )
+
+    if trace:
+        print( "empile le résultat", valStk )
+
+# effectue les opérations (gauche à droite) de même précédence
+def repeatOps( refOp, valStk, opStk ):
+    #il faut au moins 2 valeurs pour effectuer une opération
+    if trace:
+        print( "repeatOps..." )
+    while len( valStk ) > 1 and prec( refOp ) <= prec( opStk.top() ):
+        doOp( valStk, opStk )
+
+
+# appel de la fonction principale
+main()
+

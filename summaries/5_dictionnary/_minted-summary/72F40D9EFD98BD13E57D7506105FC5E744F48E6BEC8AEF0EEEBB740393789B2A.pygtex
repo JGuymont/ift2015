@@ -1,0 +1,18 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def} \PYG{n+nf}{\PYGZus{}subtree\PYGZus{}last\PYGZus{}position}\PYG{p}{(}\PYG{n}{p}\PYG{p}{):}
+	\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}Return the first position of the subtree of which p is the root\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+	\PYG{k}{while} \PYG{n}{right}\PYG{p}{(}\PYG{n}{p}\PYG{p}{)} \PYG{o+ow}{is} \PYG{o+ow}{not} \PYG{n+nb+bp}{None}\PYG{p}{:}
+	\PYG{n}{p} \PYG{o}{=} \PYG{n}{right}\PYG{p}{(}\PYG{n}{p}\PYG{p}{)}
+	\PYG{k}{return} \PYG{n}{p}
+	
+\PYG{k}{def} \PYG{n+nf}{before}\PYG{p}{(}\PYG{n}{p}\PYG{p}{):}
+	\PYG{k}{if} \PYG{n}{left}\PYG{p}{(}\PYG{n}{p}\PYG{p}{)} \PYG{o+ow}{is} \PYG{o+ow}{not} \PYG{n+nb+bp}{None}\PYG{p}{:}
+	    \PYG{n}{p} \PYG{o}{=} \PYG{n}{right}\PYG{p}{(}\PYG{n}{p}\PYG{p}{)}
+	    \PYG{k}{return} \PYG{n}{\PYGZus{}subtree\PYGZus{}last\PYGZus{}position}\PYG{p}{(}\PYG{n}{p}\PYG{p}{)}
+	\PYG{k}{else}\PYG{p}{:}
+	    \PYG{n}{ancestor} \PYG{o}{=} \PYG{n}{parent}\PYG{p}{(}\PYG{n}{p}\PYG{p}{)}
+	    \PYG{k}{while} \PYG{n}{ancestor} \PYG{o+ow}{is} \PYG{o+ow}{not} \PYG{n+nb+bp}{None} \PYG{o+ow}{and} \PYG{n}{left}\PYG{p}{(}\PYG{n}{ancestor}\PYG{p}{)} \PYG{o}{==} \PYG{n}{p}\PYG{p}{:}
+	        \PYG{n}{p} \PYG{o}{=} \PYG{n}{ancestor}
+	        \PYG{n}{ancestor} \PYG{o}{=} \PYG{n}{parent}\PYG{p}{(}\PYG{n}{p}\PYG{p}{)}
+	    \PYG{k}{return} \PYG{n}{ancestor}
+\end{Verbatim}

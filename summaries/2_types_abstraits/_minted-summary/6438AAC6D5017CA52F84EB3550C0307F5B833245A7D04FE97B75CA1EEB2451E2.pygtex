@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{class} \PYG{n+nc}{Node}\PYG{p}{:}
+    \PYG{k}{def} \PYG{n+nf+fm}{\PYGZus{}\PYGZus{}init\PYGZus{}\PYGZus{}}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{element}\PYG{p}{,} \PYG{n+nb}{next}\PYG{o}{=}\PYG{n+nb+bp}{None}\PYG{p}{):}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{element} \PYG{o}{=} \PYG{n}{element}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{next} \PYG{o}{=} \PYG{n+nb}{next}
+\end{Verbatim}

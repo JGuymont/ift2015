@@ -1,0 +1,13 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def} \PYG{n+nf}{first}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{):}
+    \PYG{n}{p} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{root}\PYG{p}{()}
+    \PYG{k}{while} \PYG{n}{p} \PYG{o+ow}{is} \PYG{o+ow}{not} \PYG{n+nb+bp}{None}\PYG{p}{:}
+        \PYG{n}{p} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{left}\PYG{p}{(}\PYG{n}{p}\PYG{p}{)}
+    \PYG{k}{return} \PYG{n}{p}
+
+\PYG{k}{def} \PYG{n+nf}{last}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{):}
+    \PYG{n}{p} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{root}\PYG{p}{()}
+    \PYG{k}{while} \PYG{n}{p} \PYG{o+ow}{is} \PYG{o+ow}{not} \PYG{n+nb+bp}{None}\PYG{p}{:}
+        \PYG{n}{p} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{right}\PYG{p}{(}\PYG{n}{p}\PYG{p}{)}
+    \PYG{k}{return} \PYG{n}{p}
+\end{Verbatim}

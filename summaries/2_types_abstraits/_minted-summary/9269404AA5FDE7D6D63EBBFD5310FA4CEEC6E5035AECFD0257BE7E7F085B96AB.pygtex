@@ -1,0 +1,11 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{from} \PYG{n+nn}{node} \PYG{k+kn}{import} \PYG{n}{Node}
+
+\PYG{k}{if} \PYG{n+nv+vm}{\PYGZus{}\PYGZus{}name\PYGZus{}\PYGZus{}} \PYG{o}{==} \PYG{l+s+s1}{\PYGZsq{}\PYGZus{}\PYGZus{}main\PYGZus{}\PYGZus{}\PYGZsq{}}\PYG{p}{:}
+    \PYG{n}{node1} \PYG{o}{=} \PYG{n}{Node}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}one\PYGZsq{}}\PYG{p}{)}
+    \PYG{n}{node2} \PYG{o}{=} \PYG{n}{Node}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}two\PYGZsq{}}\PYG{p}{)}
+    \PYG{n}{node3} \PYG{o}{=} \PYG{n}{Node}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}three\PYGZsq{}}\PYG{p}{)}
+
+    \PYG{n}{node1}\PYG{o}{.}\PYG{n}{next} \PYG{o}{=} \PYG{n}{node2}
+    \PYG{n}{node2}\PYG{o}{.}\PYG{n}{next} \PYG{o}{=} \PYG{n}{node3}
+\end{Verbatim}

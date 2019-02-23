@@ -1,0 +1,14 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def} \PYG{n+nf}{construct\PYGZus{}path}\PYG{p}{(}\PYG{n}{g}\PYG{p}{,} \PYG{n}{u}\PYG{p}{,} \PYG{n}{v}\PYG{p}{,} \PYG{n}{discovered}\PYG{p}{):}
+    \PYG{n}{path} \PYG{o}{=} \PYG{p}{[]}
+    \PYG{k}{if} \PYG{n}{v} \PYG{o+ow}{in} \PYG{n}{discovered}\PYG{p}{:}
+        \PYG{n}{path}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{n}{v}\PYG{p}{)}
+        \PYG{n}{walk} \PYG{o}{=} \PYG{n}{v}
+        \PYG{k}{while} \PYG{n}{walk} \PYG{o+ow}{is} \PYG{o+ow}{not} \PYG{n}{u}\PYG{p}{:}
+            \PYG{n}{e} \PYG{o}{=} \PYG{n}{discovered}\PYG{p}{[}\PYG{n}{walk}\PYG{p}{]}
+            \PYG{n}{parent} \PYG{o}{=} \PYG{n}{e}\PYG{o}{.}\PYG{n}{opposite}\PYG{p}{(}\PYG{n}{walk}\PYG{p}{)}
+            \PYG{n}{path}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{n}{parent}\PYG{p}{)}
+            \PYG{n}{walk} \PYG{o}{=} \PYG{n}{parent}
+        \PYG{n}{path}\PYG{o}{.}\PYG{n}{reverse}\PYG{p}{()}
+    \PYG{k}{return} \PYG{n}{path}
+\end{Verbatim}

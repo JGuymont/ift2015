@@ -1,0 +1,164 @@
+#!/usr/local/bin/python3
+
+# author = "Francois Major"
+# version = "1.0"
+# date = "7 november 2018"
+#
+# Programme Python pour IFT2015/5 Dictionnaires/5.2 Hachage
+
+from HashMap import HashMap
+import random
+import time
+
+#classe ProbeHashMap pour hachage par probing linéaire
+class ProbeHashMap( HashMap ):
+
+    #il faut distinguer entre une entrée vide et une entrée disponible
+    _AVAIL = object()
+
+    #une entrée est disponible si elle assignée None ou _AVAIL
+    def _is_available( self, j ):
+        return self._T[j] is None or self._T[j] is ProbeHashMap._AVAIL
+
+    #chercher l'entrée de la clé k à partir de l'index j
+    #assume qu'il existe au moins une entrée None dans la table
+    #assuré par l'extension de la table lorsqu'on dépasse 50% d'occupation
+    def _find_slot( self, j, k ):
+        #on assume aucune entrée n'est disponible
+        firstAvail = None
+        #on boucle jusqu'à ce que l'une des 2 conditions suivantes
+        #est remplie: l'entrée est None, indiquant l'échec
+        #             l'entrée contient la clé, indiquand le succès
+        while True:
+            #si l'entrée est None ou _AVAIL
+            if self._is_available( j ):
+                #on note l'index de cette (première) entrée (libre)
+                if firstAvail is None:
+                    firstAvail = j
+                #si l'entrée est None, on a terminé de parcourir
+                #les entrées de ce sondage sans avoir trouvé la clé k
+                #on retourne False et le premier index libre de ce sondage
+                if self._T[j] is None:
+                    return ( False, firstAvail )
+            #sinon, si l'entrée contient la clé, on retourne True et son index
+            elif k == self._T[j]._key:
+                return ( True, j )
+            #on avance circulairement dans la table
+            j = (j + 1) % len( self._T )
+
+    #accéder à l'élément de clé k
+    def _bucket_getitem( self, j, k ):
+        #on le cherche à partir de son index initial j
+        #en effectuant un sondage avec _find_slot
+        found, s = self._find_slot( j, k )
+        #si la recherche échoue, on retourne False
+        if not found:
+            return False
+        #sinon, on retourne la valeur de l'élément de clé k
+        return self._T[s]._value
+
+    #assignation de l'élément (k, v)
+    def _bucket_setitem( self, j, k, v ):
+        #on cherche une entrée disponible à partir de son index initial j
+        #en effectuant un sondage avec _find_slot
+        found, s = self._find_slot( j, k )
+        #si la clé k n'est pas utilisée, on ajoute l'élément dans la table
+        #au premier index disponible du sondage, il est retourné dans s
+        #et on incrémente la taille de la table
+        if not found:
+            self._T[s] = self._Item( k, v )
+            self._n += 1
+        #sinon, on l'a trouvé, alors on met à jour sa valeur
+        else:
+            self._T[s]._value = v
+
+    #suppression de l'élément de clé k
+    def _bucket_delitem( self, j, k ):
+        #on le cherche à partir de son index initial j
+        #en effectuant un sondage avec _find_slot
+        found, s = self._find_slot( j, k )
+        #si la recherche échoue, on soulève une erreur
+        if not found:
+            return False
+        #sinon, on rend l'entrée disponible en lui assignant _AVAIL
+        #et on retourne la valeur de l'élément
+        value = self._T[s]._value
+        self._T[s] = ProbeHashMap._AVAIL
+        return value
+
+    #itérateur sur les clés de la table
+    def __iter__( self ):
+        for j in range( len( self._T ) ):
+            if not self._is_available( j ):
+                yield self._T[j]._key
+
+#unit testing
+
+if __name__ == '__main__':
+
+    print( "ProbeHashMap unit testing..." )
+
+    M = ProbeHashMap()
+
+    nb = 1000000
+    random.seed( 131341 )
+
+    #Insertion
+    avant = time.time()
+    for i in range( nb ):
+        key = random.randint( 0, nb )
+        M[key] = key
+    apres = time.time()
+    print( "Insertion of", nb, "keys in ", apres-avant, "seconds." )
+
+    #Access
+    random.seed( 131341 )
+    avant = time.time()
+    for i in range( nb ):
+        key = random.randint( 0, nb )
+        try:
+            x = M[key]
+        except KeyError:
+            pass
+    apres = time.time()
+    print( "Access of", nb, "keys in ", apres-avant, "seconds." )
+
+    #Delete
+    avant = time.time()
+    nbdel = 0
+    for i in range( nb ):
+        key = random.randint( 0, nb )
+        try:
+            del M[key]
+        except KeyError:
+            pass
+    apres = time.time()
+    print( "Delete ", nb, "keys in ", apres-avant, "seconds." )
+
+#     print( len( M ) ) #0
+#     M['K'] = 2
+#     M['B'] = 4
+#     M['U'] = 2
+#     M['V'] = 8
+#     M['K'] = 9
+#     print( M['B'] )
+#     print( M['X'] )
+#     print( M.get( 'F' ) )
+#     print( M.get( 'F', 5 ) )
+#     print( M.get( 'K', 5 ) )
+#     print( len( M ) )
+#     del M['V']
+#     print( M.pop( 'K' ) )
+#     for key in M.keys():
+#         print( str( key ) )
+#     for value in M.values():
+#         print( str( value ) )
+#     for item in M.items():
+#         print( str( item ) )
+#     print( M.setdefault( 'B', 1 ) )
+#     print( M.setdefault( 'A', 1 ) )
+#     print( M )
+#     print( M.popitem() )
+    
+    print( "End of testing." )
+

@@ -1,0 +1,62 @@
+from Tree import Tree
+
+# Classe de base pour arbres binaires
+class BinaryTree(Tree):
+
+    # retourne l'enfant de gauche d'une Position
+    def left(self, p):
+        pass
+
+    # retourne l'enfant de droite d'une Position
+    def right(self, p):
+        pass
+
+    # retourne l'adelphe d'une Position
+    def sibling( self, p ):
+        # on passe par le parent
+        parent = self.parent( p )
+        # si le parent n'existe pas, p est la racine, pas d'adelphe
+        if parent is None:
+            return None
+        # sinon, si p est l'enfant gauche, on retourne l'enfant droit
+        #        si p est l'enfant droit, on retourne l'enfant gauche
+        else:
+            if p == self.left( parent ):
+                return self.right( parent )
+            else:
+                return self.left( parent )
+
+    # retourne un générateur des enfants dans l'ordre gauche-droit
+    def children( self, p ):
+        if self.left( p ) is not None:
+            yield self.left( p )
+        if self.right( p ) is not None:
+            yield self.right( p )
+
+    # traverse le sous-arbre dont la racine est une Position
+    # utilise un parcours dans l'ordre gauche-racine-droit
+    def inorder_print( self, p ):
+        # si l'enfant gauche existe, on le traite, récursivement
+        if self.left( p ) is not None:
+            self.inorder_print( self.left( p ) )
+        # on traite p
+        print( p )
+        # si l'enfant droit existe, on le traite, récursivement
+        if self.right( p ) is not None:
+            self.inorder_print( self.right( p ) )
+
+    # traverse le sous-arbre dont la racine est une Position
+    # utilise un parcours dans l'ordre gauche-racine-droit
+    # pour imprimer l'expression arithmétique définit par le sous-arbre
+    def printExpression( self, p ):
+        # imprime expression gauche
+        if self.left( p ) is not None:
+            print( '(' )
+            self.printExpression( self.left( p ) )
+        # imprime opération
+        print( p )
+        # imprime expression droite
+        if self.right( p ) is not None:
+            self.printExpression( self.right( p ) )
+            print( ')' )
+

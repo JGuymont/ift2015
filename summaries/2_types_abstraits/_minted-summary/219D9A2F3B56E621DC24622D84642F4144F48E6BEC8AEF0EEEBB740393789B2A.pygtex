@@ -1,0 +1,13 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{class} \PYG{n+nc}{SinglyLinkedList}
+    \PYG{o}{...}
+    \PYG{k}{def} \PYG{n+nf}{find}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{e}\PYG{p}{):}
+        \PYG{k}{if} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{is\PYGZus{}empty}\PYG{p}{:}
+            \PYG{k}{return} \PYG{n+nb+bp}{None}
+        \PYG{n}{curr} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}head}\PYG{o}{.}\PYG{n}{\PYGZus{}next}
+        \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}size}\PYG{p}{):}
+            \PYG{k}{if} \PYG{n}{element} \PYG{o}{==} \PYG{n}{curr}\PYG{p}{:}
+                \PYG{k}{return} \PYG{n}{i}
+    		\PYG{n}{curr} \PYG{o}{=} \PYG{n}{curr}\PYG{o}{.}\PYG{n}{\PYGZus{}next}
+        \PYG{k}{return} \PYG{n+nb+bp}{None}
+\end{Verbatim}

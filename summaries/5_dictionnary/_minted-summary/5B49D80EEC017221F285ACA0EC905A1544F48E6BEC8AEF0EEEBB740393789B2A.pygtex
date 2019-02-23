@@ -1,0 +1,13 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def} \PYG{n+nf}{BFS}\PYG{p}{(}\PYG{n}{g}\PYG{p}{,} \PYG{n}{s}\PYG{p}{,} \PYG{n}{discovered}\PYG{p}{):}
+    \PYG{n}{level} \PYG{o}{=} \PYG{p}{[}\PYG{n}{s}\PYG{p}{]}
+    \PYG{k}{while} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{level}\PYG{p}{)} \PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{0}\PYG{p}{:}
+        \PYG{n}{next\PYGZus{}level} \PYG{o}{=} \PYG{p}{[]}
+        \PYG{k}{for} \PYG{n}{u} \PYG{o+ow}{in} \PYG{n}{level}\PYG{p}{:}
+            \PYG{k}{for} \PYG{n}{e} \PYG{o+ow}{in} \PYG{n}{g}\PYG{o}{.}\PYG{n}{incident\PYGZus{}edges}\PYG{p}{(}\PYG{n}{u}\PYG{p}{):}
+                \PYG{n}{v} \PYG{o}{=} \PYG{n}{e}\PYG{o}{.}\PYG{n}{opposite}\PYG{p}{(}\PYG{n}{u}\PYG{p}{)}
+                \PYG{k}{if} \PYG{n}{v} \PYG{o+ow}{not} \PYG{o+ow}{in} \PYG{n}{discovered}\PYG{p}{:}
+                    \PYG{n}{discovered}\PYG{p}{[}\PYG{n}{v}\PYG{p}{]} \PYG{o}{=} \PYG{n}{e}
+                    \PYG{n}{next\PYGZus{}level}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{n}{v}\PYG{p}{)}
+        \PYG{n}{level} \PYG{o}{=} \PYG{n}{next\PYGZus{}level}
+\end{Verbatim}

@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def} \PYG{n+nf}{DFS}\PYG{p}{(}\PYG{n}{g}\PYG{p}{,} \PYG{n}{u}\PYG{p}{,} \PYG{n}{visited}\PYG{o}{=}\PYG{p}{\PYGZob{}\PYGZcb{}):}
+    \PYG{k}{for} \PYG{n}{e} \PYG{o+ow}{in} \PYG{n}{g}\PYG{o}{.}\PYG{n}{incident\PYGZus{}edges}\PYG{p}{(}\PYG{n}{u}\PYG{p}{):}
+        \PYG{n}{v} \PYG{o}{=} \PYG{n}{e}\PYG{o}{.}\PYG{n}{opposite}\PYG{p}{(}\PYG{n}{u}\PYG{p}{)}
+        \PYG{k}{if} \PYG{n}{v} \PYG{o+ow}{not} \PYG{o+ow}{in} \PYG{n}{visited}\PYG{p}{:}
+            \PYG{n}{visited}\PYG{p}{[}\PYG{n}{v}\PYG{p}{]} \PYG{o}{=} \PYG{n}{e}
+            \PYG{n}{DFS}\PYG{p}{(}\PYG{n}{g}\PYG{p}{,} \PYG{n}{v}\PYG{p}{,} \PYG{n}{visited}\PYG{p}{)}
+\end{Verbatim}

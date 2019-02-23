@@ -1,0 +1,25 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{class} \PYG{n+nc}{DoublyLinkedList}\PYG{p}{:}
+    \PYG{o}{...}
+    \PYG{k}{def} \PYG{n+nf+fm}{\PYGZus{}\PYGZus{}len\PYGZus{}\PYGZus{}}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{):}
+        \PYG{k}{return} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}size}
+    \PYG{k}{def} \PYG{n+nf}{is\PYGZus{}empty}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{):}
+        \PYG{k}{return} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}size} \PYG{o}{==} \PYG{l+m+mi}{0}
+    \PYG{k}{def} \PYG{n+nf}{first}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{):}
+        \PYG{k}{if} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{is\PYGZus{}empty}\PYG{p}{():}
+            \PYG{k}{raise} \PYG{n}{EmptyError}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}the list is empty\PYGZsq{}}\PYG{p}{)}
+        \PYG{k}{return} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}header}\PYG{o}{.}\PYG{n}{next}\PYG{o}{.}\PYG{n}{element}
+    \PYG{k}{def} \PYG{n+nf}{last}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{):}
+        \PYG{k}{if} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{is\PYGZus{}empty}\PYG{p}{():}
+            \PYG{k}{raise} \PYG{n}{EmptyError}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}the list is empty\PYGZsq{}}\PYG{p}{)}
+        \PYG{k}{return} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}trailer}\PYG{o}{.}\PYG{n}{prev}\PYG{o}{.}\PYG{n}{element}
+    \PYG{k}{def} \PYG{n+nf}{find}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{e}\PYG{p}{):}
+        \PYG{k}{if} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{is\PYGZus{}empty}\PYG{p}{():}
+            \PYG{k}{raise} \PYG{n}{EmptyError}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}the list is empty\PYGZsq{}}\PYG{p}{)}
+        \PYG{n}{curr\PYGZus{}node} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}header}\PYG{o}{.}\PYG{n}{next}
+        \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}size}\PYG{p}{):}
+            \PYG{k}{if} \PYG{n}{element} \PYG{o}{==} \PYG{n}{curr\PYGZus{}node}\PYG{p}{:}
+                \PYG{k}{return} \PYG{n}{i}
+            \PYG{n}{curr\PYGZus{}node} \PYG{o}{=} \PYG{n}{curr\PYGZus{}node}\PYG{o}{.}\PYG{n}{\PYGZus{}next}
+        \PYG{k}{return} \PYG{n+nb+bp}{None}
+\end{Verbatim}

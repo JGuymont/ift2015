@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def} \PYG{n+nf}{find\PYGZus{}int}\PYG{p}{(}\PYG{n}{S}\PYG{p}{,} \PYG{n}{k}\PYG{p}{,} \PYG{n}{i}\PYG{p}{,} \PYG{n}{j}\PYG{p}{):}
+    \PYG{k}{if} \PYG{n}{S}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{+} \PYG{n}{S}\PYG{p}{[}\PYG{n}{j}\PYG{p}{]}
+\end{Verbatim}

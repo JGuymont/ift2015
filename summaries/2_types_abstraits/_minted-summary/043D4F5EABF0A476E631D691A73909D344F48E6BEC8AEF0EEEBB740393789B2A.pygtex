@@ -1,0 +1,24 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{class} \PYG{n+nc}{SinglyLinkedList}
+    \PYG{o}{...}
+    \PYG{k}{def} \PYG{n+nf}{remove}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{k}\PYG{p}{):}
+        \PYG{k}{if} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{is\PYGZus{}empty}\PYG{p}{():}
+            \PYG{k}{raise} \PYG{n}{EmptyError}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}the list is empty\PYGZsq{}}\PYG{p}{)}
+        \PYG{k}{if} \PYG{o+ow}{not} \PYG{l+m+mi}{0} \PYG{o}{\PYGZlt{}=} \PYG{n}{k} \PYG{o}{\PYGZlt{}} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}size}\PYG{p}{:}
+            \PYG{k}{raise} \PYG{n+ne}{IndexError}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}index invalid for list of size \PYGZob{}\PYGZcb{}\PYGZsq{}}\PYG{o}{.}\PYG{n}{format}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}size}\PYG{p}{))}
+        \PYG{n}{prev\PYGZus{}node} \PYG{o}{=} \PYG{n+nb+bp}{None}
+        \PYG{n}{curr\PYGZus{}node} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}head}
+        \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{k}\PYG{p}{):}
+            \PYG{n}{prev\PYGZus{}node} \PYG{o}{=} \PYG{n}{curr\PYGZus{}node}        \PYG{c+c1}{\PYGZsh{} curr\PYGZus{}node is index `k\PYGZhy{}1`}
+            \PYG{n}{curr\PYGZus{}node} \PYG{o}{=} \PYG{n}{curr\PYGZus{}node}\PYG{o}{.}\PYG{n}{\PYGZus{}next}  \PYG{c+c1}{\PYGZsh{} curr\PYGZus{}node is index `k`}
+        \PYG{k}{if} \PYG{n}{prev\PYGZus{}node} \PYG{o+ow}{is} \PYG{n+nb+bp}{None}\PYG{p}{:}            \PYG{c+c1}{\PYGZsh{} index `k` is 0}
+            \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}head} \PYG{o}{=} \PYG{n}{curr\PYGZus{}node}\PYG{o}{.}\PYG{n}{\PYGZus{}next} \PYG{c+c1}{\PYGZsh{} remove current head}
+        \PYG{k}{else}\PYG{p}{:}
+            \PYG{n}{prev\PYGZus{}node}\PYG{o}{.}\PYG{n}{\PYGZus{}next} \PYG{o}{=} \PYG{n}{curr\PYGZus{}node}\PYG{o}{.}\PYG{n}{\PYGZus{}next} \PYG{c+c1}{\PYGZsh{} remove current node}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}size} \PYG{o}{\PYGZhy{}=} \PYG{l+m+mi}{1}
+        \PYG{k}{if} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}size} \PYG{o}{==} \PYG{l+m+mi}{0}\PYG{p}{:}
+            \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}tail} \PYG{o}{=} \PYG{n+nb+bp}{None}           \PYG{c+c1}{\PYGZsh{} remove reference tail \PYGZlt{}\PYGZhy{} removed node}
+        \PYG{k}{if} \PYG{n}{prev\PYGZus{}node}\PYG{o}{.}\PYG{n}{\PYGZus{}next} \PYG{o+ow}{is} \PYG{n+nb+bp}{None}\PYG{p}{:}     \PYG{c+c1}{\PYGZsh{} tail was removed	}
+            \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}tail} \PYG{o}{=} \PYG{n}{prev\PYGZus{}node}
+        \PYG{k}{return} \PYG{n}{curr\PYGZus{}node}\PYG{o}{.}\PYG{n}{\PYGZus{}element}
+\end{Verbatim}

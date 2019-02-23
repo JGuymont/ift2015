@@ -1,0 +1,43 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{class} \PYG{n+nc}{ListMap}\PYG{p}{:}
+    \PYG{k}{def} \PYG{n+nf+fm}{\PYGZus{}\PYGZus{}init\PYGZus{}\PYGZus{}}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{):}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}T} \PYG{o}{=} \PYG{p}{[]}
+
+    \PYG{k}{def} \PYG{n+nf+fm}{\PYGZus{}\PYGZus{}getitem\PYGZus{}\PYGZus{}}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{k}\PYG{p}{):}
+        \PYG{k}{for} \PYG{n}{item} \PYG{o+ow}{in} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}T}\PYG{p}{:}
+            \PYG{k}{if} \PYG{n}{k} \PYG{o}{==} \PYG{n}{item}\PYG{o}{.}\PYG{n}{\PYGZus{}key}\PYG{p}{:}
+                \PYG{k}{return} \PYG{n}{item}\PYG{o}{.}\PYG{n}{\PYGZus{}values}
+        \PYG{k}{raise} \PYG{n+ne}{KeyError}\PYG{p}{(}\PYG{n}{k}\PYG{p}{)}
+
+    \PYG{k}{def} \PYG{n+nf+fm}{\PYGZus{}\PYGZus{}setitem\PYGZus{}\PYGZus{}}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{k}\PYG{p}{,} \PYG{n}{v}\PYG{p}{):}
+        \PYG{k}{for} \PYG{n}{item} \PYG{o+ow}{in} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}T}\PYG{p}{:}
+            \PYG{k}{if} \PYG{n}{k} \PYG{o}{==} \PYG{n}{item}\PYG{o}{.}\PYG{n}{\PYGZus{}key}\PYG{p}{:}
+                \PYG{n}{item}\PYG{o}{.}\PYG{n}{\PYGZus{}value} \PYG{o}{=} \PYG{n}{v}
+                \PYG{k}{return}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}T}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{n}{Item}\PYG{p}{(}\PYG{n}{k}\PYG{p}{,} \PYG{n}{v}\PYG{p}{))}
+
+    \PYG{k}{def} \PYG{n+nf+fm}{\PYGZus{}\PYGZus{}len\PYGZus{}\PYGZus{}}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{):}
+        \PYG{k}{return} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}T}\PYG{p}{)}
+
+    \PYG{k}{def} \PYG{n+nf+fm}{\PYGZus{}\PYGZus{}contains\PYGZus{}\PYGZus{}}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{k}\PYG{p}{)}
+        \PYG{k}{try}\PYG{p}{:}
+            \PYG{n+nb+bp}{self}\PYG{p}{[}\PYG{n}{k}\PYG{p}{]}
+        \PYG{k}{except} \PYG{n+ne}{KeyError}\PYG{p}{:}
+            \PYG{k}{return} \PYG{n+nb+bp}{False}
+        \PYG{k}{return} \PYG{n+nb+bp}{True}
+
+    \PYG{k}{def} \PYG{n+nf+fm}{\PYGZus{}\PYGZus{}iter\PYGZus{}\PYGZus{}}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{):}
+        \PYG{k}{for} \PYG{n}{item} \PYG{o+ow}{in} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}T}\PYG{p}{:}
+            \PYG{k}{yield} \PYG{n}{item}\PYG{o}{.}\PYG{n}{key}\PYG{p}{()}
+
+    \PYG{k}{def} \PYG{n+nf}{\PYGZus{}\PYGZus{}items\PYGZus{}\PYGZus{}}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{):}
+        \PYG{k}{for} \PYG{n}{item} \PYG{o+ow}{in} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}T}\PYG{p}{:}
+            \PYG{k}{yield} \PYG{p}{(}\PYG{n}{item}\PYG{o}{.}\PYG{n}{key}\PYG{p}{(),} \PYG{n}{item}\PYG{o}{.}\PYG{n}{value}\PYG{p}{())}
+
+    \PYG{k}{def} \PYG{n+nf+fm}{\PYGZus{}\PYGZus{}delitem\PYGZus{}\PYGZus{}}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{k}\PYG{p}{):}
+        \PYG{k}{for} \PYG{n}{i}\PYG{p}{,} \PYG{n}{item} \PYG{o+ow}{in} \PYG{n+nb}{enumerate}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}T}\PYG{p}{):}
+            \PYG{k}{if} \PYG{n}{k} \PYG{o}{==} \PYG{n}{item}\PYG{o}{.}\PYG{n}{key}\PYG{p}{():}
+                \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}T}\PYG{o}{.}\PYG{n}{pop}\PYG{p}{(}\PYG{n}{i}\PYG{p}{)}
+                \PYG{k}{return}
+        \PYG{k}{raise} \PYG{n+ne}{KeyError}\PYG{p}{(}\PYG{n}{k}\PYG{p}{)}
+\end{Verbatim}

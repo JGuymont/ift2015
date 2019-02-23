@@ -1,0 +1,32 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def} \PYG{n+nf}{TreeDelete}\PYG{p}{(}\PYG{n}{T}\PYG{p}{,} \PYG{n}{p}\PYG{p}{):}
+    \PYG{n}{node} \PYG{o}{=} \PYG{n}{p}\PYG{o}{.}\PYG{n}{\PYGZus{}node}
+    \PYG{n}{child} \PYG{o}{=} \PYG{n}{node}\PYG{o}{.}\PYG{n}{\PYGZus{}left} \PYG{k}{if} \PYG{n}{node}\PYG{o}{.}\PYG{n}{\PYGZus{}left} \PYG{o+ow}{is} \PYG{o+ow}{not} \PYG{n+nb+bp}{None} \PYG{k}{else} \PYG{n}{node}\PYG{o}{.}\PYG{n}{\PYGZus{}right}
+    \PYG{k}{if} \PYG{n}{child} \PYG{o+ow}{is} \PYG{o+ow}{not} \PYG{n+nb+bp}{None}\PYG{p}{:}
+        \PYG{n}{child}\PYG{o}{.}\PYG{n}{\PYGZus{}parent} \PYG{o}{=} \PYG{n}{node}\PYG{o}{.}\PYG{n}{\PYGZus{}parent}
+    \PYG{k}{if} \PYG{n}{node} \PYG{o+ow}{is} \PYG{n}{T}\PYG{o}{.}\PYG{n}{root}\PYG{p}{():}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}root} \PYG{o}{=} \PYG{n}{child}
+    \PYG{k}{else}\PYG{p}{:}
+         \PYG{n}{parent} \PYG{o}{=} \PYG{n}{node}\PYG{o}{.}\PYG{n}{\PYGZus{}parent}
+         \PYG{k}{if} \PYG{n}{node} \PYG{o+ow}{is} \PYG{n}{parent}\PYG{o}{.}\PYG{n}{\PYGZus{}left}\PYG{p}{:}
+             \PYG{n}{parent}\PYG{o}{.}\PYG{n}{\PYGZus{}left} \PYG{o}{=} \PYG{n}{child}
+         \PYG{k}{else}\PYG{p}{:}
+             \PYG{n}{parent}\PYG{o}{.}\PYG{n}{\PYGZus{}right} \PYG{o}{=} \PYG{n}{child}
+     \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}size} \PYG{o}{\PYGZhy{}=} \PYG{l+m+mi}{1}
+     \PYG{n}{node}\PYG{o}{.}\PYG{n}{\PYGZus{}parent} \PYG{o}{=} \PYG{n}{node}
+     \PYG{k}{return} \PYG{n}{node}\PYG{o}{.}\PYG{n}{\PYGZus{}element}
+	
+\PYG{k}{def} \PYG{n+nf}{TreeDelete}\PYG{p}{(}\PYG{n}{T}\PYG{p}{,} \PYG{n}{k}\PYG{p}{):}
+    \PYG{n}{p} \PYG{o}{=} \PYG{n}{TreeSearch}\PYG{p}{(}\PYG{n}{k}\PYG{p}{)}
+    \PYG{k}{if} \PYG{o+ow}{not} \PYG{n}{p}\PYG{o}{.}\PYG{n}{\PYGZus{}node}\PYG{o}{.}\PYG{n}{\PYGZus{}element}\PYG{o}{.}\PYG{n}{key}\PYG{p}{()} \PYG{o}{==} \PYG{n}{k}\PYG{p}{:}
+        \PYG{k}{raise} \PYG{n+ne}{KeyError}
+    \PYG{k}{if} \PYG{n}{T}\PYG{o}{.}\PYG{n}{num\PYGZus{}children}\PYG{p}{(}\PYG{n}{p}\PYG{p}{)} \PYG{o}{\PYGZlt{}} \PYG{l+m+mi}{2}\PYG{p}{:}
+        \PYG{n}{parent} \PYG{o}{=} \PYG{n}{T}\PYG{o}{.}\PYG{n}{parent}\PYG{p}{(}\PYG{n}{p}\PYG{p}{)}
+        \PYG{n}{T}\PYG{o}{.}\PYG{n}{\PYGZus{}delete}\PYG{p}{(}\PYG{n}{p}\PYG{p}{)}
+    \PYG{k}{else}\PYG{p}{:}
+        \PYG{n}{next\PYGZus{}position} \PYG{o}{=} \PYG{n}{T}\PYG{o}{.}\PYG{n}{after}\PYG{p}{(}\PYG{n}{p}\PYG{p}{)}
+        \PYG{n}{p}\PYG{o}{.}\PYG{n}{\PYGZus{}node}\PYG{o}{.}\PYG{n}{\PYGZus{}element} \PYG{o}{=} \PYG{n}{next\PYGZus{}position}\PYG{o}{.}\PYG{n}{\PYGZus{}node}\PYG{o}{.}\PYG{n}{\PYGZus{}element}
+        \PYG{n}{parent} \PYG{o}{=} \PYG{n}{T}\PYG{o}{.}\PYG{n}{parent}\PYG{p}{(}\PYG{n}{next\PYGZus{}position}\PYG{p}{)}
+        \PYG{n}{TreeDelete}\PYG{p}{(}\PYG{n}{T}\PYG{p}{,} \PYG{n}{next\PYGZus{}position}\PYG{p}{)}
+    \PYG{n}{T}\PYG{o}{.}\PYG{n}{\PYGZus{}rebalance\PYGZus{}delete}\PYG{p}{(}\PYG{n}{parent}\PYG{p}{)}
+\end{Verbatim}

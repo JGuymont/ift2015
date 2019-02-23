@@ -1,0 +1,11 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def} \PYG{n+nf}{TreeSearch}\PYG{p}{(}\PYG{n}{T}\PYG{p}{,} \PYG{n}{k}\PYG{p}{,} \PYG{n}{p}\PYG{p}{):}
+    \PYG{k}{if} \PYG{n}{k} \PYG{o}{==} \PYG{n}{p}\PYG{o}{.}\PYG{n}{key}\PYG{p}{():}
+        \PYG{k}{return} \PYG{n}{p}
+    \PYG{k}{elif} \PYG{n}{k} \PYG{o}{\PYGZlt{}} \PYG{n}{p}\PYG{o}{.}\PYG{n}{key}\PYG{p}{()} \PYG{o+ow}{and} \PYG{n}{T}\PYG{o}{.}\PYG{n}{left}\PYG{p}{(}\PYG{n}{p}\PYG{p}{)} \PYG{o+ow}{is} \PYG{o+ow}{not} \PYG{n+nb+bp}{None}\PYG{p}{:}
+        \PYG{k}{return} \PYG{n}{find}\PYG{p}{(}\PYG{n}{T}\PYG{p}{,} \PYG{n}{k}\PYG{p}{,} \PYG{n}{T}\PYG{o}{.}\PYG{n}{left}\PYG{p}{(}\PYG{n}{p}\PYG{p}{))}
+    \PYG{k}{elif} \PYG{n}{k} \PYG{o}{\PYGZgt{}} \PYG{n}{p}\PYG{o}{.}\PYG{n}{key}\PYG{p}{()} \PYG{o+ow}{and} \PYG{n}{T}\PYG{o}{.}\PYG{n}{right}\PYG{p}{(}\PYG{n}{p}\PYG{p}{)} \PYG{o+ow}{is} \PYG{o+ow}{not} \PYG{n+nb+bp}{None}\PYG{p}{:}
+        \PYG{k}{return} \PYG{n}{find}\PYG{p}{(}\PYG{n}{T}\PYG{p}{,} \PYG{n}{k}\PYG{p}{,} \PYG{n}{T}\PYG{o}{.}\PYG{n}{right}\PYG{p}{(}\PYG{n}{p}\PYG{p}{))}
+    \PYG{k}{else}\PYG{p}{:}
+        \PYG{k}{return} \PYG{n+nb+bp}{None}
+\end{Verbatim}

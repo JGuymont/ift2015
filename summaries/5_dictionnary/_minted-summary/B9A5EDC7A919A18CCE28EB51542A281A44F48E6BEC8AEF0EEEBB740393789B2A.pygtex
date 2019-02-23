@@ -1,0 +1,46 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{class} \PYG{n+nc}{Graph}\PYG{p}{(}\PYG{n}{Vertex}\PYG{p}{,} \PYG{n}{Edges}\PYG{p}{):}
+    \PYG{k}{def} \PYG{n+nf+fm}{\PYGZus{}\PYGZus{}init\PYGZus{}\PYGZus{}}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{durected}\PYG{o}{=}\PYG{n+nb+bp}{False}\PYG{p}{):}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}outgoing} \PYG{o}{=} \PYG{p}{\PYGZob{}\PYGZcb{}}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}ingoing} \PYG{o}{=} \PYG{p}{\PYGZob{}\PYGZcb{}} \PYG{k}{if} \PYG{n}{directed} \PYG{k}{else} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}outgoing}
+
+    \PYG{k}{def} \PYG{n+nf}{vertex\PYGZus{}count}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{):}
+        \PYG{k}{return} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}outgoing}\PYG{p}{)}
+
+    \PYG{k}{def} \PYG{n+nf}{vertices}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{):}
+        \PYG{k}{return} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}outgoing}\PYG{o}{.}\PYG{n}{keys}\PYG{p}{()}
+
+    \PYG{k}{def} \PYG{n+nf}{edge\PYGZus{}count}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{):}
+        \PYG{n}{total} \PYG{o}{=} \PYG{n+nb}{sum}\PYG{p}{([}\PYG{n+nb}{len}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}outgoing}\PYG{p}{[}\PYG{n}{v}\PYG{p}{])} \PYG{k}{for} \PYG{n}{v} \PYG{o+ow}{in} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{vertices}\PYG{p}{()])}
+        \PYG{k}{return} \PYG{n}{total} \PYG{k}{if} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{is\PYGZus{}directed}\PYG{p}{()} \PYG{k}{else} \PYG{n}{total} \PYG{o}{//} \PYG{l+m+mi}{2}
+
+    \PYG{k}{def} \PYG{n+nf}{edges}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{):}
+        \PYG{n}{edges} \PYG{o}{=} \PYG{n+nb}{set}\PYG{p}{()}
+        \PYG{k}{for} \PYG{n}{incident\PYGZus{}map} \PYG{o+ow}{in} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}outgoing}\PYG{o}{.}\PYG{n}{values}\PYG{p}{():}
+            \PYG{n}{edges}\PYG{o}{.}\PYG{n}{updata}\PYG{p}{(}\PYG{n}{incident\PYGZus{}map}\PYG{o}{.}\PYG{n}{values}\PYG{p}{())}
+        \PYG{k}{return} \PYG{n}{edges}
+
+    \PYG{k}{def} \PYG{n+nf}{get\PYGZus{}edge}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{u}\PYG{p}{,} \PYG{n}{v}\PYG{p}{):}
+        \PYG{k}{return} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}outgoing}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]}\PYG{o}{.}\PYG{n}{get}\PYG{p}{(}\PYG{n}{v}\PYG{p}{)}
+
+    \PYG{k}{def} \PYG{n+nf}{degree}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{v}\PYG{p}{,} \PYG{n}{outgoing}\PYG{o}{=}\PYG{n+nb+bp}{True}\PYG{p}{):}
+        \PYG{n}{adjacent} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}ougoing} \PYG{k}{if} \PYG{n}{outgoing} \PYG{k}{else} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}ingoing}
+        \PYG{k}{return} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{adj}\PYG{p}{[}\PYG{n}{v}\PYG{p}{])}
+
+    \PYG{k}{def} \PYG{n+nf}{incident\PYGZus{}edges}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{v}\PYG{p}{,} \PYG{n}{outgoing}\PYG{o}{=}\PYG{n+nb+bp}{True}\PYG{p}{):}
+        \PYG{n}{adjacent} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}ougoing} \PYG{k}{if} \PYG{n}{outgoing} \PYG{k}{else} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}ingoing}
+        \PYG{k}{for} \PYG{n}{edge} \PYG{o+ow}{in} \PYG{n}{adjacent}\PYG{p}{[}\PYG{n}{v}\PYG{p}{]}\PYG{o}{.}\PYG{n}{values}\PYG{p}{():}
+            \PYG{k}{yield} \PYG{n}{edge}
+
+    \PYG{k}{def} \PYG{n+nf}{insert\PYGZus{}vertex}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{x}\PYG{o}{=}\PYG{n+nb+bp}{None}\PYG{p}{):}
+        \PYG{n}{v} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{Vertex}\PYG{p}{(}\PYG{n}{x}\PYG{p}{)}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}outgoing}\PYG{p}{[}\PYG{n}{v}\PYG{p}{]} \PYG{o}{=} \PYG{p}{\PYGZob{}\PYGZcb{}}
+        \PYG{k}{if} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{is\PYGZus{}directed}\PYG{p}{():}
+            \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}ingoing}\PYG{p}{[}\PYG{n}{v}\PYG{p}{]} \PYG{o}{=} \PYG{p}{\PYGZob{}\PYGZcb{}}
+        \PYG{k}{return} \PYG{n}{v}
+
+    \PYG{k}{def} \PYG{n+nf}{insert\PYGZus{}edge}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{u}\PYG{p}{,} \PYG{n}{v}\PYG{p}{,} \PYG{n}{x}\PYG{o}{=}\PYG{n+nb+bp}{None}\PYG{p}{):}
+        \PYG{n}{e} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{Edge}\PYG{p}{(}\PYG{n}{u}\PYG{p}{,} \PYG{n}{v}\PYG{p}{,} \PYG{n}{x}\PYG{p}{)}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}outgoing}\PYG{p}{[}\PYG{n}{u}\PYG{p}{][}\PYG{n}{v}\PYG{p}{]} \PYG{o}{=} \PYG{n}{e}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}incoming}\PYG{p}{[}\PYG{n}{v}\PYG{p}{][}\PYG{n}{u}\PYG{p}{]} \PYG{o}{=} \PYG{n}{e}
+\end{Verbatim}

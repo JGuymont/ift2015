@@ -1,0 +1,21 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def} \PYG{n+nf}{\PYGZus{}link\PYGZus{}leaves}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{):}
+    \PYG{n}{Q} \PYG{o}{=} \PYG{n}{ListQueue}\PYG{p}{()}
+    \PYG{n}{found\PYGZus{}first\PYGZus{}leaf} \PYG{o}{=} \PYG{n+nb+bp}{False}
+    \PYG{n}{prev\PYGZus{}leaf} \PYG{o}{=} \PYG{n+nb+bp}{None}
+
+    \PYG{n}{Q}\PYG{o}{.}\PYG{n}{enqueue}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}root}\PYG{p}{)}
+
+    \PYG{k}{while} \PYG{o+ow}{not} \PYG{n}{Q}\PYG{o}{.}\PYG{n}{is\PYGZus{}empty}\PYG{p}{():}
+        \PYG{n}{p} \PYG{o}{=} \PYG{n}{Q}\PYG{o}{.}\PYG{n}{dequeue}\PYG{p}{()}
+        \PYG{k}{if} \PYG{n}{prev\PYGZus{}leaf} \PYG{o+ow}{is} \PYG{o+ow}{not} \PYG{n+nb+bp}{None} \PYG{o+ow}{and} \PYG{n}{p}\PYG{o}{.}\PYG{n}{\PYGZus{}is\PYGZus{}leaf}\PYG{p}{():}
+            \PYG{n}{prev\PYGZus{}leaf}\PYG{o}{.}\PYG{n}{\PYGZus{}right\PYGZus{}leaf} \PYG{o}{=} \PYG{n}{p}
+            \PYG{n}{prev\PYGZus{}leaf} \PYG{o}{=} \PYG{n}{p}
+        \PYG{k}{if} \PYG{o+ow}{not} \PYG{n}{found\PYGZus{}first\PYGZus{}leaf} \PYG{o+ow}{and} \PYG{n}{p}\PYG{o}{.}\PYG{n}{\PYGZus{}is\PYGZus{}leaf}\PYG{p}{():}
+            \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}first\PYGZus{}leaf} \PYG{o}{=} \PYG{n}{p}
+            \PYG{n}{prev\PYGZus{}leaf} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}first\PYGZus{}leaf}
+        \PYG{k}{for} \PYG{n}{c} \PYG{o+ow}{in} \PYG{n}{p}\PYG{o}{.}\PYG{n}{\PYGZus{}children}\PYG{p}{():}
+            \PYG{n}{Q}\PYG{o}{.}\PYG{n}{enqueue}\PYG{p}{(}\PYG{n}{c}\PYG{p}{)}
+    \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}last\PYGZus{}leaf} \PYG{o}{=} \PYG{n}{p}
+    \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}last\PYGZus{}leaf}\PYG{o}{.}\PYG{n}{\PYGZus{}right\PYGZus{}leaf} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}first\PYGZus{}leaf}
+\end{Verbatim}
