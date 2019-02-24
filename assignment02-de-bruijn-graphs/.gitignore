@@ -1,0 +1,9 @@
+__pycache__/
+bckup/
+old/
+dev2.zip
+dev2/
+data/GCF_000002985.6_WBcel235_rna/
+data/GCF_000002985.6_WBcel235_rna.fna
+data/contigs.pkl
+data/results.pkl
